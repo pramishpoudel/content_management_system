@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+<h1>You are already logged in.</h1>
+{% else %}
+  <h2>{{ user.username }}</h2>
+<form method="POST" action="">
+ {% csrf_token %}
+ {{ form.as_p }}
+ <input type="checkbox" name="remember_me"> Remember Me<br><br>
+ <button type="submit">Login</button>
+</form>
+{% endif %}
+{% endblock %}
