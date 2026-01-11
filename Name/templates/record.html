@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+    <h2>Customer Record</h2>
+    <div class="card">
+  <div class="card-body">
+     <ul>
+      <li><strong>ID:</strong> {{ customer_record.id }}</li>
+      <li><strong>Name:</strong> {{ customer_record.first_name }} {{ customer_record.last_name }}</li>
+      <li><strong>Email:</strong> {{ customer_record.email }}</li>
+      <li><strong>Phone:</strong> {{ customer_record.phone }}</li>
+      <li><strong>City:</strong> {{ customer_record.city }}</li>
+      <li><strong>State:</strong> {{ customer_record.state }}</li>
+      <li><strong>Zip Code:</strong> {{ customer_record.zip_code }}</li>
+    </ul>
+  </div>
+</div>
+<a href="{% url 'home' %}" class="btn btn-primary">Back to Home</a>
+<a href="{% url 'delete_record' customer_record.id %}" class="btn btn-danger">Delete Record</a>
+<a href="{% url 'update_record' customer_record.id %}" class="btn btn-warning">Update Record</a>
+    
+  {% else %}
+    <h1>You must be logged in to view this page.</h1>
+  {% endif %}
+{% endblock %}

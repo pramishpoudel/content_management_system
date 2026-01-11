@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+    <h2>Add Record</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Add Record</button>
+    </form>
+  {% endif %}
+{% endblock %}
